@@ -14,12 +14,12 @@
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="net.sherafatpour.shop.view.fragment.CardFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/title_card"
         tools:layout="@layout/card_dashboard" />
 
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="net.sherafatpour.shop.view.fragment.NotificationsFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>
