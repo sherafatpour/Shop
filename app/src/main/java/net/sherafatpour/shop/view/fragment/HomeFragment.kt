@@ -7,13 +7,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import net.sherafatpour.shop.R
 import net.sherafatpour.shop.view.adapter.PostAdapter
 import net.sherafatpour.shop.viewModel.HomeViewModel
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(),PostAdapter.ItemsClick {
 
     private lateinit var homeViewModel: HomeViewModel
     private lateinit var recyclerView: RecyclerView
@@ -37,7 +39,7 @@ class HomeFragment : Fragment() {
 
         homeViewModel.postLiveData.observe(viewLifecycleOwner, Observer {
 
-            val postAdapter = PostAdapter(it)
+            val postAdapter = PostAdapter(it,this)
             recyclerView.apply {
 
                 layoutManager  =LinearLayoutManager(requireActivity())
@@ -45,5 +47,14 @@ class HomeFragment : Fragment() {
 
             }
         })
+    }
+
+    override fun itemId(id: String) {
+
+        val bundle = Bundle()
+        bundle.putString("postId", id)
+
+        Navigation.findNavController(recyclerView).navigate(R.id.action_navigation_home_to_detailFragment,bundle)
+
     }
 }
