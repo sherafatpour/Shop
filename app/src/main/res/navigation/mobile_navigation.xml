@@ -19,7 +19,7 @@
         android:id="@+id/navigation_dashboard"
         android:name="net.sherafatpour.shop.view.fragment.CardFragment"
         android:label="@string/title_card"
-        tools:layout="@layout/card_dashboard" />
+        tools:layout="@layout/fragment_card" />
 
     <fragment
         android:id="@+id/navigation_notifications"
@@ -28,9 +28,9 @@
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/detailFragment"
-        android:name="net.sherafatpour.shop.viewModel.DetailFragment"
+        android:name="net.sherafatpour.shop.view.fragment.DetailFragment"
         android:label="detail_fragment"
-        tools:layout="@layout/detail_fragment" >
+        tools:layout="@layout/fragment_detail" >
         <action
             android:id="@+id/action_detailFragment_to_navigation_home"
             app:destination="@id/navigation_home" />

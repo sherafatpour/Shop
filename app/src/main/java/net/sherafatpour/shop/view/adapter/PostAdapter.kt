@@ -6,9 +6,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import net.sherafatpour.shop.R
 import net.sherafatpour.shop.databinding.PostItemBinding
-import net.sherafatpour.shop.model.PostModel
+import net.sherafatpour.shop.model.post.PostModel
 
-class PostAdapter(private val list: PostModel, private val itemClick: ItemsClick) : RecyclerView.Adapter<PostAdapter.ViewHolderI>() {
+class PostAdapter(private val list: PostModel, private val itemClick: ItemsClick) :
+    RecyclerView.Adapter<PostAdapter.ViewHolderI>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderI {
@@ -41,8 +42,8 @@ class PostAdapter(private val list: PostModel, private val itemClick: ItemsClick
 
     }
 
-    interface ItemsClick{
-        fun itemId(id:String)
+    interface ItemsClick {
+        fun itemId(id: String)
     }
 
     class ViewHolderI(val binding: PostItemBinding) : RecyclerView.ViewHolder(binding.root)

@@ -1,4 +1,4 @@
-package net.sherafatpour.shop.model
+package net.sherafatpour.shop.model.post
 
 data class PostModelItem(
     val date: String,

@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="net.sherafatpour.shop.model.PostModelItem" />
+            type="net.sherafatpour.shop.model.post.PostModelItem" />
     </data>
 
     <androidx.cardview.widget.CardView

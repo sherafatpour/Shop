@@ -22,7 +22,7 @@ class CardFragment : Fragment() {
     ): View? {
         cardViewModel =
                 ViewModelProvider(this).get(CardViewModel::class.java)
-        val root = inflater.inflate(R.layout.card_dashboard, container, false)
+        val root = inflater.inflate(R.layout.fragment_card, container, false)
         val textView: TextView = root.findViewById(R.id.text_dashboard)
         cardViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
