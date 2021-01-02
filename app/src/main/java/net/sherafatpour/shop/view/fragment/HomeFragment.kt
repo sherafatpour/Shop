@@ -11,42 +11,58 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import net.sherafatpour.shop.DataBinderMapperImpl
 import net.sherafatpour.shop.R
+import net.sherafatpour.shop.databinding.FragmentHomeBinding
 import net.sherafatpour.shop.view.adapter.PostAdapter
 import net.sherafatpour.shop.viewModel.HomeViewModel
 
 class HomeFragment : Fragment(),PostAdapter.ItemsClick {
-
-    private lateinit var homeViewModel: HomeViewModel
+    private  var binding: FragmentHomeBinding? = null
     private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
-    ): View? {
-        homeViewModel =
-                ViewModelProvider(this).get(HomeViewModel::class.java)
+    ): View {
 
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
-        recyclerView= root.findViewById(R.id.recyclerview)
-        return root
-    }
+        //save recyclerview state -- binding ?: run {}
+        binding ?: run {
+            binding=  FragmentHomeBinding.inflate(inflater,container,false)
+            recyclerView = binding!!.recyclerview
+            val viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+            viewModel.getPosts()
+            viewModel.postLiveData.observe(requireActivity(), Observer {itpost->
+                recyclerView.also {
+                    it.layoutManager=LinearLayoutManager(requireActivity())
+                    val adapter = PostAdapter(itpost,this)
+                    it.adapter=adapter
+                }
+            })
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        homeViewModel.getPosts()
+        }
 
-        homeViewModel.postLiveData.observe(viewLifecycleOwner, Observer {
+        return binding!!.root
+/*binding ?:run {
+    val binding = FragmentHomeBinding.inflate(inflater,container,false)
+   val homeViewModel =
+            ViewModelProvider(this).get(HomeViewModel::class.java)
+    recyclerView= binding.recyclerview
+    homeViewModel.getPosts()
 
-            val postAdapter = PostAdapter(it,this)
-            recyclerView.apply {
+    homeViewModel.postLiveData.observe(viewLifecycleOwner, Observer {
 
-                layoutManager  =LinearLayoutManager(requireActivity())
-                 adapter = postAdapter
+        val postAdapter = PostAdapter(it,this)
+        recyclerView.apply {
 
-            }
-        })
+            layoutManager  =LinearLayoutManager(requireActivity())
+            adapter = postAdapter
+
+        }
+    })
+}
+        return binding!!.root*/
     }
 
     override fun itemId(id: String) {
