@@ -19,8 +19,8 @@ import net.sherafatpour.shop.viewModel.DetailViewModel
 
 class DetailFragment : Fragment() {
     lateinit var binding: FragmentDetailBinding
-    lateinit var btnCard:Button
-    lateinit var imageSlider:ViewPager
+    lateinit var btnCard: Button
+    lateinit var imageSlider: ViewPager
 
     companion object {
         fun newInstance() = DetailFragment()
@@ -29,14 +29,14 @@ class DetailFragment : Fragment() {
     private lateinit var viewModel: DetailViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View {
-         binding = DataBindingUtil.inflate(
-            LayoutInflater.from(requireContext()),
-            R.layout.fragment_detail,
-            container,
-            false
+        binding = DataBindingUtil.inflate(
+                LayoutInflater.from(requireContext()),
+                R.layout.fragment_detail,
+                container,
+                false
         )
 
         return binding.root
@@ -52,14 +52,21 @@ class DetailFragment : Fragment() {
         viewModel.detailLiveData.observe(requireActivity(), Observer { item ->
 
             binding.post = item.post[0]
-            btnCard.text =StringBuilder("افزودن به سبد خرید ${item.post[0].price} تومان")
+            btnCard.text = StringBuilder("افزودن به سبد خرید ${item.post[0].price} تومان")
             viewPager(item.slider)
         })
 
     }
 
-private fun viewPager(list: List<Slider>){
-    val adapter = ViewPagerAdapter(list)
-    imageSlider.adapter = adapter
-}
+    private fun viewPager(list: List<Slider>) {
+        val adapter = ViewPagerAdapter(list)
+
+
+        imageSlider.adapter = adapter
+        imageSlider.clipToPadding = false
+        imageSlider.pageMargin = 20
+        imageSlider.setPadding(45, 8, 10, 8)
+        imageSlider.currentItem = 2
+
+    }
 }

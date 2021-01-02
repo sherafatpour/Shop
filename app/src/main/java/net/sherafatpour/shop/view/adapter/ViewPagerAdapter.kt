@@ -21,6 +21,9 @@ class ViewPagerAdapter(val urls: List<Slider>) : PagerAdapter() {
 
     }
 
+    override fun getPageWidth(position: Int): Float {
+        return .95f
+    }
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
 
         val binding = ViewPagerItemBinding.inflate(LayoutInflater.from(container.context), container, false)
