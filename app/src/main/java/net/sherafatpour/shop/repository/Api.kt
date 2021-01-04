@@ -1,5 +1,6 @@
 package net.sherafatpour.shop.repository
 
+import net.sherafatpour.shop.model.Status
 import net.sherafatpour.shop.model.detail.PostDetail
 import net.sherafatpour.shop.model.post.PostModel
 import retrofit2.Response
@@ -19,6 +20,18 @@ interface Api {
     @FormUrlEncoded
     suspend fun postDetail(@Field("id")id:String): Response<PostDetail>
 
+    @FormUrlEncoded
+    @POST("login.php")
+    suspend fun login(@Field("mobile")mobile:String,@Field("pass")pass:String) : Response<Status>
+
+    @FormUrlEncoded
+    @POST("Reg.php")
+    suspend fun register(@Field("name")name:String,@Field("mobile")mobile:String,@Field("email")email:String,@Field("pass")pass:String) : Response<Status>
+
+    /*@FormUrlEncoded
+    @POST("User_info.php")
+    suspend fun userInfo(@Field("user_id")userid:String) : Response<List<Model_Userinfo>>
+*/
 
     companion object {
 

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="data"
+            type="net.sherafatpour.shop.viewModel.RegisterViewModel" />
+    </data>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        tools:context=".view.fragment.LoginFragment">
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true">
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <EditText
+                    android:layout_margin="10dp"
+                    android:hint="نام و نام خانوادگی"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@={data.name}"
+                    />
+                <EditText
+                    android:text="@={data.mobile}"
+
+                    android:layout_margin="10dp"
+                    android:hint="موبایل"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+                <EditText
+                    android:text="@={data.email}"
+
+                    android:layout_margin="10dp"
+                    android:hint="ایمیل"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+                <EditText
+                    android:text="@={data.pass}"
+
+                    android:layout_margin="10dp"
+                    android:hint="رمز عبور"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+                <Button
+                    android:layout_margin="10dp"
+                    android:onClick="@{data.registerBtn}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="ثبت نام"
+                    />
+                <Button
+                    android:onClick="@{data.loginBtn}"
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="قبلا ثبت نام کرده اید"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </RelativeLayout>
+</layout>

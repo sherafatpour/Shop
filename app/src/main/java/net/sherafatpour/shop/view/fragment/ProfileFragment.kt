@@ -12,14 +12,14 @@ import net.sherafatpour.shop.viewModel.ProfileViewModel
 
 class ProfileFragment : Fragment() {
 
-    private lateinit var ProfileViewModel: ProfileViewModel
+    private lateinit var profileViewModel: ProfileViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        ProfileViewModel =
+        profileViewModel =
                 ViewModelProvider(this).get(ProfileViewModel::class.java)
 
 
@@ -28,7 +28,7 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        ProfileViewModel.text.observe(viewLifecycleOwner, Observer { item ->
+        profileViewModel.text.observe(viewLifecycleOwner, Observer { item ->
 
 
 
