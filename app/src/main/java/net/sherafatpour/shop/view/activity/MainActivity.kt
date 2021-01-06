@@ -54,7 +54,9 @@ navView.setOnNavigationItemSelectedListener(this)
                 if (userid == "notFind") {
                     navController.navigate(R.id.loginFragment)
                 } else {
-                    navController.navigate(R.id.navigation_profile)
+                    val bundle= Bundle()
+                    bundle.putString("userId",userid)
+                    navController.navigate(R.id.navigation_profile,bundle)
                 }
 
             }

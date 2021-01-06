@@ -33,7 +33,9 @@ class LoginFragment : Fragment() {
         viewModel.loginLivedata.observe(requireActivity(), Observer {
             if(it.status == "ok"){
                 Repository.setLogin(requireContext(),it.user_id)
-               navController.navigate(R.id.action_loginFragment_to_navigation_profile)
+                val bundle= Bundle()
+                bundle.putString("userId",it.user_id)
+               navController.navigate(R.id.action_loginFragment_to_navigation_profile,bundle)
             }else
             {
                 Toast.makeText(requireContext(), "خطا نام کاربری یا رمز عبور صحیح نیست!", Toast.LENGTH_SHORT).show()

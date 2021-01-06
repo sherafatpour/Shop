@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="net.sherafatpour.shop.model.orders.OrderModelItem" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layoutDirection="rtl"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal">
+               <TextView
+                   android:textSize="18sp"
+
+                   android:padding="10dp"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="شماره سفارش : "/>
+               <TextView
+                   android:textSize="18sp"
+
+                   android:padding="10dp"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@{data.id}"/>
+           </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:textSize="18sp"
+                    android:padding="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/green_600"
+                    android:text="مجموع پرداخت : "/>
+                <TextView
+                    android:textSize="18sp"
+                    android:textColor="@color/green_600"
+                    android:padding="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{data.price}"/>
+            </LinearLayout>
+            <TextView
+                android:textAlignment="center"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:textSize="24sp"
+                android:padding="10dp"
+                android:id="@+id/textSuccess"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </TextView>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

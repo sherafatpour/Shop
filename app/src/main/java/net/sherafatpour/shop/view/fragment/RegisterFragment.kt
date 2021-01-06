@@ -43,8 +43,10 @@ class RegisterFragment : Fragment() {
             }
         })
         viewModel.registerLivedata.observe(requireActivity(), Observer {
-            navController.navigate(R.id.navigation_profile)
             Repository.setLogin(requireContext(), it.user_id)
+            val bundle= Bundle()
+            bundle.putString("userId",it.user_id)
+            navController.navigate(R.id.navigation_profile,bundle)
         })
 
         return binding!!.root
